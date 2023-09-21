@@ -24,6 +24,29 @@ async function getTacosById(tacoId){
     
 }
 
+async function createTaco(){
+    let response = await fetch(api_base_url,{
+        //post creates things
+        method: 'POST',
+        //things about request that server needs to know
+        headers:{
+            //the kind of data I'm giving you
+            'Content-Type': 'application/json'
+        },
+        //convert object to a string of the data so http can handle
+        body: JSON.stringify({
+            url: "https://tornadoughalli.com/wp-content/uploads/2019/05/INSTANT-POT-STREET-TACOS1.jpg",
+            name: "Worlds best tacos"
+        })
+    })
+    //was the taco created successfully
+    console.log(response)
+
+    //what data in the body?
+    let data = await response.json()
+    console.log(data)
+}
+
 //use get all, to print all tacos
 getAllTacos()
 
@@ -31,4 +54,6 @@ getAllTacos()
 getTacosById(3)
 //use get by id to print taco 3789
 //this taco doesn't exist and throws an error
-getTacosById(3789)
+// getTacosById(3789)
+
+createTaco()
