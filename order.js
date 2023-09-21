@@ -21,6 +21,46 @@ async function createOrder(p){
     console.log(data)
 }
 
+async function updateOrder(p){
+    let response = await fetch(api_base_url + "/4", {
+        //PUT replaces the data that we reference
+        method: 'PUT',
+        //things about request that server needs to know
+        headers:{
+            //the kind of data I'm giving you
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: "Jonathon updated this",
+            price: 60000,
+            quantity: 10000,
+            customerId: 15,//assume jonathon
+        })
+    })
+
+    console.log(response)
+    let data = await response.json()
+    console.log(data)
+}
+
+async function deleteOrder(p){
+    //the path is how you specifiy which item you are deleting
+    let response = await fetch(api_base_url + "/52", {
+        //delete removes things
+        method: 'DELETE',
+        //things about request that server needs to know
+        headers:{
+            //the kind of data I'm giving you
+            'Content-Type': 'application/json'
+        },
+        //there is no boddy in delete
+    })
+
+    console.log(response)
+    let data = await response.json()
+    console.log(data)
+}
+
 //how to get my button??
 let submitButton = document.querySelector("#submit-button")
 submitButton.addEventListener("click", function(e){
